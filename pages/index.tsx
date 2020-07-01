@@ -4,14 +4,13 @@ import Home from '../src/components/Home';
 import { Navbar } from '../src/components/Navbar';
 
 export default () => {
-
-  return (
-    <>
-      <Head>
-        <title>MVP blog</title>
-      </Head>
-      <Navbar />
-      <Home />
-    </>
-  );
+    return (
+        <>
+            <Head>
+                <title>MVP blog</title>
+            </Head>
+            <Navbar />
+            <Home />
+        </>
+    );
 };
