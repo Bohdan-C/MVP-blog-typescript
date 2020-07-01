@@ -23,7 +23,7 @@ const errorData = (error) => ({
 
 const successPost = (data) => ({
   type: POST_SUCCESS,
-  payload: data,
+  post: data,
 });
 
 const successAddData = () => ({
@@ -39,10 +39,11 @@ const getPosts = () => (dispatch: Function) => {
     .finally(() => postsLoading());
 };
 
-const getPostsById = (PostId: string | string[]) => (dispatch: Function) => {
-  if (PostId === undefined) return;
+const getPostsById = (postId: string) => (dispatch: Function) => {
+  if (postId === undefined) return;
   axios
-    .get(`https://simple-blog-api.crew.red/posts/${PostId}?_embed=comments`)
+    .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
+    // .then(res => dispatch({ type: "POST_SUCCESS", post: res.data }));
     .then((res) => dispatch(successPost(res.data)));
 };
 

@@ -12,8 +12,6 @@ export default () => {
   const router = useRouter();
   const { postId } = router.query;
 
-  console.log("postId :>> ", postId);
-
   const IDS = {
     BODY: "body",
     POST_ID: "postId",
@@ -23,8 +21,6 @@ export default () => {
     [IDS.BODY]: "",
     [IDS.POST_ID]: postId,
   });
-
-  console.log("state :>> ", state);
 
   const onChange = (event) => {
     const { id, value } = event.target;

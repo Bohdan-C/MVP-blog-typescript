@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPostsById } from "../../../src/redux/actions/actions";
 import { Navbar } from "../../../src/components/Navbar";
 import Comments from "../../../src/components/Comments";
-// import {InitialStateI} from "../../src/redux/reducers/reducer"
+import { IPost } from "../../../interfaces";
+import { Istate } from "../../../src/redux/reducers/reducer";
 
 export default () => {
-  const [post, setPost] = useState([]);
+  // const [postS, setPostS] = useState<IPost[]>([]);
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -28,29 +29,35 @@ export default () => {
   // }, [id]);
 
   useEffect(() => {
-    getPostsById(postId)(dispatch)
-    axios
-      .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
-      .then((data) => {
-        setPost(data.data);
-      })
-      .catch((err) => {
-        console.log("Error!", err);
-      });
+    // console.log('postId :>> ', postId);
+    dispatch(getPostsById(postId));
   }, [postId]);
 
-  //   React.useEffect(() => {
-//     getPostsById(postId, dispatch)
-// }, [postId]);
+  // axios
+  //   .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
+  //   .then((data) => {
+  //     setPost(data.data);
+  //   })
+  //   .catch((err) => {
+  //     console.log("Error!", err);
+  //   });
 
-// const { post } = useSelector((state: InitialStateI) => { return { post: state.post } });
+  // const { post } = useSelector((state: state) => { return { post: state.post } })
+
+  //   React.useEffect(() => {
+  //     getPostsById(postId, dispatch)
+  // }, [postId]);
+
+  // const { post } = useSelector((state: Istate) => {
+  //   return { post: state.post };
+  // });
 
   return (
     <>
       <Navbar />
       <Container>
-        <Title>{post.title}</Title>
-        <Description>{post.body}</Description>
+        {/* <Title>{post.title}</Title>
+        <Description>{post.body}</Description> */}
         <Comments />
       </Container>
     </>

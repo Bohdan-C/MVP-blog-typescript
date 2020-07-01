@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getPostsById } from "../redux/actions/actions";
 import { useRouter } from "next/router";
 import styled from "styled-components";
@@ -15,16 +15,11 @@ export default () => {
   const { postId } = router.query;
 
   useEffect(() => {
-    dispatch(getPostsById);
-    axios
-      .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
-      .then((data) => {
-        setCommentsArr(data.data.comments);
-      })
-      .catch((err) => {
-        console.log("Error!", err);
-      });
+    dispatch(getPostsById(postId));
   }, [postId]);
+
+  // const { post } = useSelector((state: state) => { return { post: state.post } })
+
   return (
     <ul>
       <CreateComment />

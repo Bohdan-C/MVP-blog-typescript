@@ -11,22 +11,22 @@ export interface CommentI {
   postId: number;
   body: string;
 }
-export interface PostI {
+export interface IPost {
   id: number;
   title: string;
   body: string;
   comments?: Array<CommentI>;
 }
-export interface InitialStateI {
-  posts: Array<PostI>;
+export interface Istate {
+  posts: Array<IPost>;
   isLoading: boolean;
   comment: string;
   title: string;
   body: string;
-  post?: PostI;
+  post?: IPost;
 }
 
-const initialState: InitialStateI = {
+const initialState: Istate = {
   posts: [],
   title: "",
   body: "",
@@ -34,7 +34,7 @@ const initialState: InitialStateI = {
   isLoading: false,
 };
 
-const reducer = (state: InitialStateI = initialState, action: any) => {
+const reducer = (state = initialState, action: any) => {
   switch (action.type) {
     case POSTS_LOADING:
       return { ...state, isLoading: !state.isLoading };
