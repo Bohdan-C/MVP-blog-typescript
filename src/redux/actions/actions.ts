@@ -20,7 +20,7 @@ const successPost = (data) => ({
     post: data,
 });
 
-const getPosts = () => (dispatch: Function) => {
+const getPosts = () => (dispatch) => {
     postsLoading();
     axios
         .get('https://simple-blog-api.crew.red/posts')
@@ -29,7 +29,7 @@ const getPosts = () => (dispatch: Function) => {
         .finally(() => postsLoading());
 };
 
-const getPostsById = (postId: number) => (dispatch: Function) => {
+const getPostsById = (postId) => (dispatch) => {
     if (postId === undefined) return;
     axios
         .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
@@ -40,7 +40,7 @@ interface newPost {
     body: string;
 }
 
-const addPost = (newPost: newPost, dispatch: Function) => {
+const addPost = (newPost: newPost, dispatch) => {
     axios({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
