@@ -12,6 +12,7 @@ export interface IPost {
     comments?: Array<CommentI>;
 }
 export interface Istate {
+    [reducer: string]: any;
     posts: Array<IPost>;
     isLoading: boolean;
     comment: string;
@@ -20,7 +21,7 @@ export interface Istate {
     post?: IPost;
 }
 
-const initialState: Istate = {
+export const initialState: Istate = {
     posts: [],
     title: '',
     body: '',

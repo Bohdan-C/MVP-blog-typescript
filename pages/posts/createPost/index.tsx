@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from '../../../src/components/Navbar';
 import styled from 'styled-components';
-import Router from 'next/router';
 import axios from 'axios';
 
 const IDS = {
@@ -9,7 +8,7 @@ const IDS = {
     BODY: 'body',
 };
 
-export default () => {
+export default (): JSX.Element => {
     const [state, setState] = useState({
         [IDS.TITLE]: '',
         [IDS.BODY]: '',

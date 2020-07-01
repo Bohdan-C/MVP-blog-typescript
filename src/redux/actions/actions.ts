@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POSTS_FAIL, POSTS_LOADING, POSTS_SUCCESS, POST_SUCCESS, POST_ADD_SUCCESS } from '../types/types';
+import { POSTS_FAIL, POSTS_LOADING, POSTS_SUCCESS, POST_SUCCESS } from '../types/types';
 
 const postsLoading = () => ({
     type: POSTS_LOADING,
@@ -20,10 +20,6 @@ const successPost = (data) => ({
     post: data,
 });
 
-const successAddData = () => ({
-    type: POST_ADD_SUCCESS,
-});
-
 const getPosts = () => (dispatch: Function) => {
     postsLoading();
     axios
@@ -33,7 +29,7 @@ const getPosts = () => (dispatch: Function) => {
         .finally(() => postsLoading());
 };
 
-const getPostsById = (postId: string) => (dispatch: Function) => {
+const getPostsById = (postId: number) => (dispatch: Function) => {
     if (postId === undefined) return;
     axios
         .get(`https://simple-blog-api.crew.red/posts/${postId}?_embed=comments`)
@@ -44,7 +40,7 @@ interface newPost {
     body: string;
 }
 
-const addPost = (newPost: newPost, dispatch: Function) => (dispatch: Function) => {
+const addPost = (newPost: newPost, dispatch: Function) => {
     axios({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

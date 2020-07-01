@@ -3,7 +3,7 @@ import React from 'react';
 import Home from '../src/components/Home';
 import { Navbar } from '../src/components/Navbar';
 
-export default () => {
+export default (): JSX.Element => {
     return (
         <>
             <Head>

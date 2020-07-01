@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPostsById } from '../../../src/redux/actions/actions';
 import { Navbar } from '../../../src/components/Navbar';
 import Comments from '../../../src/components/Comments';
+import { Istate } from '../../../src/redux/reducers/reducer';
 
-export default () => {
+export default (): JSX.Element => {
     const dispatch = useDispatch();
     const router = useRouter();
     const { postId } = router.query;
@@ -15,7 +16,7 @@ export default () => {
         dispatch(getPostsById(postId));
     }, [postId]);
 
-    const { post } = useSelector((state) => state.reducer);
+    const { post } = useSelector((state: Istate) => state.reducer);
 
     if (!post) {
         return <h2>LOADING</h2>;

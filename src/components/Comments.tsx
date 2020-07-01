@@ -4,8 +4,9 @@ import { getPostsById } from '../redux/actions/actions';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import CreateComment from './CreateComment';
+import { Istate } from '../redux/reducers/reducer';
 
-export default () => {
+export default (): JSX.Element => {
     const dispatch = useDispatch();
     const router = useRouter();
     const { postId } = router.query;
@@ -14,7 +15,7 @@ export default () => {
         dispatch(getPostsById(postId));
     }, [postId]);
 
-    const { post } = useSelector((state) => state.reducer);
+    const { post } = useSelector((state: Istate) => state.reducer);
 
     if (!post) {
         return <h2>LOADING</h2>;

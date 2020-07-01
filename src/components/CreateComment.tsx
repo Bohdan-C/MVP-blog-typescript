@@ -2,14 +2,13 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-import { CommentI } from '../redux/reducers/reducer';
 import Router from 'next/router';
 
-export default () => {
+export default (): JSX.Element => {
     const router = useRouter();
     const { postId } = router.query;
 
-    const IDS: CommentI = {
+    const IDS = {
         BODY: 'body',
         POST_ID: 'postId',
     };
