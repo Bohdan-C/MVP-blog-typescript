@@ -11,19 +11,19 @@ export interface CommentI {
   postId: number;
   body: string;
 }
-export interface post {
+export interface PostI {
   id: number;
   title: string;
   body: string;
   comments?: Array<CommentI>;
 }
 export interface InitialStateI {
-  posts: Array<post>;
+  posts: Array<PostI>;
   isLoading: boolean;
   comment: string;
   title: string;
   body: string;
-  post?: post;
+  post?: PostI;
 }
 
 const initialState: InitialStateI = {

@@ -48,6 +48,7 @@ const List = styled.ul`
   flex-wrap: wrap;
   width: 1040px;
   margin: 0 auto;
+  margin-top: 25px;
   padding: 0;
 `;
 

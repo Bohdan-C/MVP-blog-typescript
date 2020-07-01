@@ -13,7 +13,7 @@ export const Navbar: React.FC = () => (
           </Link>
         </li>
         <li>
-          <Link href="/posts/createPost" as="/create/new/post">
+          <Link href="/posts/createPost">
               <Links>Create post</Links>
           </Link>
         </li>
